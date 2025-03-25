@@ -12,19 +12,19 @@
           </a>
         </div>
         <div class="divider"></div>
-        <h2 class="card-title text-2xl sm:text-3xl md:text-4xl mb-6">Quiz hosten: {{ $quiz->title }}</h2>
+        <h2 class="card-title text-2xl sm:text-3xl md:text-4xl mb-6">Quiz Name: {{ $quiz->title }}</h2>
         
         <div class="flex flex-col gap-6">
           <div class="card bg-base-200 shadow-lg">
             <div class="card-body">
               <div class="flex items-center gap-2 mb-4">
                 <i class="fas fa-users text-xl"></i>
-                <h3 class="font-bold text-xl">Spelers</h3>
+                <h3 class="font-bold text-xl">Players:</h3>
               </div>
               <div id="players-container" class="flex flex-wrap gap-4 min-h-[100px]">
                 <div class="flex flex-col items-center gap-2">
                   <i class="fas fa-user-slash text-2xl opacity-50"></i>
-                  <p class="text-lg italic opacity-50">Nog geen spelers...</p>
+                  <p class="text-lg italic opacity-50">No players yet...</p>
                 </div>
               </div>
             </div>
@@ -36,7 +36,7 @@
             </div>
             <div class="w-full md:w-2/3">
               <div class="card bg-base-200 shadow-lg p-4">
-                <h3 class="font-bold text-lg mb-2">Beschrijving:</h3>
+                <h3 class="font-bold text-lg mb-2">Description:</h3>
                 <p>{{ $quiz->description }}</p>
                 
                 @php
@@ -54,8 +54,8 @@
                 </div>
                 
                 <div class="mt-4">
-                  <h3 class="font-bold text-lg mb-2">Aantal vragen:</h3>
-                  <div class="badge badge-error">{{ $questionCount }} {{ $questionCount === 1 ? 'vraag' : 'vragen' }}</div>
+                  <h3 class="font-bold text-lg mb-2">Question Count:</h3>
+                  <div class="badge badge-error">{{ $questionCount }} {{ $questionCount === 1 ? 'vraag' : 'questions' }}</div>
                 </div>
               </div>
             </div>
@@ -65,19 +65,21 @@
           
           <div class="flex flex-row gap-4 justify-between">
             <div class="flex flex-col gap-4">
-              <h3 class="font-bold text-xl">Start de quiz:</h3>
+              <h3 class="font-bold text-xl">Session:</h3>
               <div>
                 <form action="{{ route('quizzes.start', $quiz->id) }}" method="POST">
                     @csrf
                     <button type="submit" id="start-button" class="btn btn-primary btn-lg opacity-50 cursor-not-allowed" disabled>
                         <i class="fa-solid fa-play mr-2"></i>
-                        Start quiz sessie
+                        Start quiz
                     </button>
                 </form>
+                @if(auth()->user()->role === 'admin')
                 <a href="{{ route('quizzes.questions.index', $quiz->id) }}" class="btn btn-outline btn-lg mt-2">
                   <i class="fa-solid fa-list-check mr-2"></i>
-                  Bekijk vragen
+                  Edit
                 </a>
+                @endif
               </div>
             </div>
             <div class="card bg-base-200 shadow-lg border-2 border-info p-4 text-center">
@@ -142,7 +144,7 @@ function updatePlayers() {
         container.innerHTML = `
           <div class="flex flex-col items-center gap-2">
             <i class="fas fa-user-slash text-2xl opacity-50"></i>
-            <p class="text-lg italic opacity-50">Nog geen spelers...</p>
+            <p class="text-lg italic opacity-50">No players...</p>
           </div>
         `;
       } else {
