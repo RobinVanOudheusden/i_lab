@@ -56,7 +56,7 @@
           </div>
 
           <div class="form-control mt-4">
-            <div class="g-recaptcha flex justify-center" data-sitekey="6LelPvYqAAAAAAao2ndbxu2zD8gNarwnF3ccRZYD"></div>
+            <div class="g-recaptcha flex justify-center" data-sitekey="6LcnX_8qAAAAAGUKA_XAfxqKJD071-sAAqXz9KZs"></div>
             <div id="recaptcha-error" class="text-error text-sm mt-2 text-center hidden">
               Vul de reCAPTCHA in om door te gaan.
             </div>

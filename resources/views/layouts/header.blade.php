@@ -28,6 +28,8 @@
       <a href="{{ route('quizzes.index') }}" class="btn btn-ghost mr-2 hidden lg:inline-flex items-center justify-center">
         Dashboard
       </a>
+      
+      </a>
     </div>
     @endif
   @endauth
