@@ -11,27 +11,23 @@
   </div>
   <div class="navbar-end">
   @auth
-    <form method="POST" action="{{ route('logout') }}" class="hidden lg:block">
-      @csrf
-      <button type="submit" class="btn btn-ghost mr-2 flex items-center justify-center">
+    <div class="hidden lg:flex items-center space-x-2">
+      @if(auth()->user()->role === 'teacher' || auth()->user()->role === 'admin')
+        <a href="{{ route('quizzes.index') }}" class="btn btn-ghost">
+          Dashboard
+        </a>
+      @endif
+      <button form="logout-form" type="submit" class="btn btn-ghost">
         Logout
       </button>
+    </div>
+    <form id="logout-form" method="POST" action="{{ route('logout') }}" class="hidden">
+      @csrf
     </form>
   @else
-    <a href="{{ route('login') }}" class="btn btn-ghost mr-2 hidden lg:inline-flex items-center justify-center">
+    <a href="{{ route('login') }}" class="btn btn-ghost hidden lg:inline-flex">
       Login
     </a>
-  @endauth
-  @auth
-    @if(auth()->user()->role === 'teacher' || auth()->user()->role === 'admin')
-    <div class="hidden lg:flex">
-      <a href="{{ route('quizzes.index') }}" class="btn btn-ghost mr-2 hidden lg:inline-flex items-center justify-center">
-        Dashboard
-      </a>
-      
-      </a>
-    </div>
-    @endif
   @endauth
   <label class="swap swap-rotate">
   <input type="checkbox" onchange="toggleTheme(this)" />
