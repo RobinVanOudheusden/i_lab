@@ -1,12 +1,14 @@
 <header class="navbar bg-base-200 text-base-content p-4">
   <div class="navbar-start">
     <div class="flex items-center">
-      <img
-        src="{{ asset('i_lab.png') }}"
-        alt="i_lab logo"
-        width="120"
-        height="120"
-        class="fill-current my-auto">
+      <a href="{{ route('auth.join') }}">
+        <img
+          src="{{ asset('i_lab.png') }}"
+          alt="i_lab logo"
+          width="120"
+          height="120"
+          class="fill-current my-auto">
+      </a>
     </div>
   </div>
   <div class="navbar-end">
