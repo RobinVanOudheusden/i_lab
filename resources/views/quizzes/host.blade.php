@@ -41,7 +41,7 @@
                 
                 @php
                   $tags = array_filter(array_map('trim', explode(',', $quiz->tags)));
-                  $questionCount = $quiz->questions->count();
+                  $questionCount = $quiz->questions()->where('quiz_id', $quiz->id)->count();
                 @endphp
                 
                 <div class="mt-4">

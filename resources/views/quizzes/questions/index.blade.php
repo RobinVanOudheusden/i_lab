@@ -14,7 +14,7 @@
         <h2 class="card-title text-2xl sm:text-3xl md:text-4xl mb-6">Vragen voor quiz: {{ $quiz->title }}</h2>
         <div class="overflow-x-auto">
           <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 shadow-xl border-2 border-info p-4">
-            @if (!isset($questions) || $questions === null || count($questions) === 0)
+            @if (!isset($questions) || $questions === null || ($questions) === 0)
               <p class="text-center text-lg italic opacity-50">Geen vragen gevonden voor deze quiz...</p>
               <p class="text-center text-md">Voeg <a href="{{ route('quizzes.questions.create', $quiz->id) }}" class="link link-hover text-secondary">hier</a> een nieuwe vraag toe!</p>
             @else
